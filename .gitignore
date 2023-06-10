@@ -1,7 +1,10 @@
 /build/
+.idea
 sketchup.cpp
 sketchup.so
+sketchup.cpython-311-darwin.so
 SketchUpAPI.framework
+LayOutAPI.framework
 .DS_Store
 **/__pycache__
 **/__pycache__/*.pyc

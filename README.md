@@ -1,33 +1,73 @@
-# pyslapi
+# skp2blender
+
 Python bindings for the official Sketchup API and an importer for blender based on them
 
+## Install dev tools
 
-# OSX Build info
-INSTALL DEV TOOLS
-1) Install Python3 from Python website (python.org)
-2) Install Cython from shell:
-   pip3 install Cython --install-option="--no-cython-compile"
-   (replace by pip if needed)
+- Install Python3 
 
-3) Download Sketchup SDK https://extensions.sketchup.com/sketchup-sdk
+```shell
+brew install python@3.11
+```
 
-BUILD
-1) Copy LayOutAPI.framework and SketchUpAPI.framework from SDK directory to pyslapi
+- Install Cython from shell: 
 
-2) Build OSX/Windows version
-   python3 setup.py build_ext --inplace
+```shell
+pip3 install Cython --install-option="--no-cython-compile"
+```
 
-3) Run the two last lines of setup script manually:
-	install_name_tool -change @rpath/SketchUpAPI.framework/Versions/Current/SketchUpAPI @loader_path/SketchUpAPI.framework/Versions/Current/SketchUpAPI sketchup.cpython-37m-darwin.so
-	install_name_tool -change @rpath/SketchUpAPI.framework/Versions/A/SketchUpAPI @loader_path/SketchUpAPI.framework/Versions/A/SketchUpAPI sketchup.cpython-37m-darwin.so
+- Download Sketchup SDK https://extensions.sketchup.com/sketchup-sdk
 
-INSTALL
-1) Copy the following files from pyslapi to SketchUp_Importer
-  LayOutAPI.framework
-  SketchUpAPI.framework
-  sketchup.cpython-37m-darwin
+## Build for macOS
 
-2) Rename sketchup.cpython-37m-darwin.so to sketchup.so
+1. Copy `LayOutAPI.framework` and `SketchUpAPI.framework` from SDK directory to `skp2blender`
 
-2) Look the addon in Blender and enable it
+2. Build macOS version
+
+```shell 
+python3 setup.py build_ext --inplace
+```
+
+3. Run the two last lines of setup script manually: 
+
+```shell
+install_name_tool -change @rpath/SketchUpAPI.framework/Versions/Current/SketchUpAPI @loader_path/SketchUpAPI.framework/Versions/Current/SketchUpAPI sketchup.cpython-311-darwin.so 
+```
+
+```shell
+install_name_tool -change @rpath/SketchUpAPI.framework/Versions/A/SketchUpAPI @loader_path/SketchUpAPI.framework/Versions/A/SketchUpAPI sketchup.cpython-311-darwin.so
+```
+
+## Pack add-ons for macOS
+
+Copy the following files from `skp2blender` to `sketchup-importer-macos`
+
+1. `LayOutAPI.framework` 
+
+```shell
+cp -R LayOutAPI.framework sketchup-importer-macos
+```
+
+2. `SketchUpAPI.framework` 
+
+```shell
+cp -R SketchUpAPI.framework sketchup-importer-macos
+```
+
+3. `sketchup.cpython-311-darwin.so`
+
+```shell
+cp -R sketchup.cpython-311-darwin.so sketchup-importer-macos/sketchup.so
+```
+
+Zip add-ons
+
+```shell
+zip -r sketchup-importer-0.23.2-macos.zip sketchup-importer-macos
+```
+
+## Install add-ons to Blender
+
+1. Open blender
+2. Edit -> Preferences -> Add-Ons -> Install -> sketchup-importer-0.23.2-macos.zip
 
