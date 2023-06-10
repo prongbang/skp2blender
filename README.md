@@ -62,10 +62,6 @@ cp -R sketchup.cpython-311-darwin.so sketchup-importer-macos/sketchup.so
 
 Zip add-ons
 
-```shell
-zip -r sketchup-importer-0.23.2-macos.zip sketchup-importer-macos
-```
-
 ## Install add-ons to Blender
 
 1. Open blender

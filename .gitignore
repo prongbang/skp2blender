@@ -13,3 +13,4 @@ LayOutAPI.framework
 *.so
 .vscode/
 **/env/
+sdk
