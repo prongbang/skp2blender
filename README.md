@@ -2,6 +2,11 @@
 
 Python bindings for the official Sketchup API and an importer for blender based on them
 
+## Download
+
+- [macOS (Intel)](https://github.com/prongbang/skp2blender/raw/master/add-ons/sketchup-importer-0.23.2-macos-intel.zip)
+- [macOS (Apple Silicon)](https://github.com/prongbang/skp2blender/raw/master/add-ons/sketchup-importer-0.23.2-macos-arch64.zip)
+
 ## Install dev tools
 
 - Install Python3 
